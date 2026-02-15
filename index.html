@@ -274,6 +274,7 @@
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
+        margin-bottom: 30px;
       }
 
       .yes-button {
@@ -432,12 +433,13 @@
       }
 
       .photo-frame img {
-        width: 200px;
-        height: 200px;
+        width: 300px;
+        height: 300px;
         object-fit: cover;
         border-radius: 10px;
         display: block;
         transition: opacity 0.5s ease;
+        margin-bottom: 40px;
       }
 
       .photo-frame img.hover-image {
@@ -458,7 +460,7 @@
 
       .photo-caption {
         font-family: "Parisienne", cursive;
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         color: var(--rose-deep);
         margin-top: 15px;
         text-align: center;
@@ -466,6 +468,7 @@
       }
 
       .photo-caption.alternate {
+        font-size: 1.5rem;
         position: absolute;
         bottom: -35px;
         left: 0;
@@ -549,7 +552,7 @@
 
       .cute-text {
         font-family: "Parisienne", cursive;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         color: var(--rose-pink);
         margin-top: 20px;
         min-height: 40px;
@@ -567,8 +570,8 @@
       }
 
       .kiss-gif {
-        width: 300px;
-        height: 300px;
+        width: 400px;
+        height: 400px;
         margin: 0 auto 40px;
         border-radius: 50%;
         overflow: hidden;
@@ -652,10 +655,102 @@
 
       .hug-message {
         font-family: "Parisienne", cursive;
-        font-size: 2.5rem;
+        font-size: 3.8rem;
         color: var(--rose-deep);
         margin-top: 30px;
         animation: heartbeat 2s ease-in-out infinite;
+      }
+
+      /* Welcome overlay for music start */
+      .welcome-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+      }
+
+      .welcome-overlay.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .welcome-content {
+        background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+        padding: 60px 40px;
+        border-radius: 30px;
+        text-align: center;
+        box-shadow: 0 20px 60px rgba(201, 24, 74, 0.3);
+        max-width: 500px;
+        animation: bounce-in 0.6s ease-out;
+      }
+
+      @keyframes bounce-in {
+        0% {
+          transform: scale(0.3);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .welcome-content h2 {
+        font-family: "Parisienne", cursive;
+        font-size: 3rem;
+        color: var(--rose-deep);
+        margin-bottom: 20px;
+      }
+
+      .welcome-content p {
+        font-size: 1.2rem;
+        color: var(--text-soft);
+        margin-bottom: 30px;
+      }
+
+      .start-button {
+        font-family: "Parisienne", cursive;
+        font-size: 2rem;
+        padding: 20px 50px;
+        background: linear-gradient(
+          135deg,
+          var(--rose-pink) 0%,
+          var(--rose-deep) 100%
+        );
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 10px 30px rgba(201, 24, 74, 0.4);
+        transition: all 0.3s ease;
+        animation: pulse-glow-button 2s ease-in-out infinite;
+      }
+
+      .start-button:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 15px 40px rgba(201, 24, 74, 0.5);
+      }
+
+      @keyframes pulse-glow-button {
+        0%,
+        100% {
+          box-shadow: 0 10px 30px rgba(201, 24, 74, 0.4);
+        }
+        50% {
+          box-shadow: 0 10px 40px rgba(201, 24, 74, 0.6);
+        }
       }
 
       .music-toggle {
@@ -713,23 +808,55 @@
       }
 
       .love-letter {
-        background: linear-gradient(to bottom, #fffaf0 0%, #fff5f7 100%);
-        padding: 50px 40px;
-        border-radius: 20px;
-        box-shadow: 0 15px 50px rgba(201, 24, 74, 0.2);
-        max-width: 600px;
+        background: linear-gradient(
+          135deg,
+          #fffaf0 0%,
+          #fff5f7 50%,
+          #ffe6f0 100%
+        );
+        padding: 60px 80px;
+        border-radius: 30px;
+        box-shadow:
+          0 20px 60px rgba(201, 24, 74, 0.25),
+          inset 0 0 80px rgba(255, 255, 255, 0.5);
+        max-width: 900px;
         margin: 0 auto;
         position: relative;
-        border: 3px solid var(--accent-gold);
+        border: 4px solid var(--accent-gold);
+        backdrop-filter: blur(10px);
       }
 
       .love-letter::before {
         content: "💌";
         position: absolute;
-        top: -30px;
-        right: 30px;
-        font-size: 3rem;
+        top: -35px;
+        right: 40px;
+        font-size: 4rem;
         animation: swing 2s ease-in-out infinite;
+        filter: drop-shadow(0 5px 15px rgba(201, 24, 74, 0.3));
+      }
+
+      .love-letter::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+          radial-gradient(
+            circle at 20% 30%,
+            rgba(255, 107, 157, 0.1) 0%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(255, 182, 193, 0.1) 0%,
+            transparent 40%
+          );
+        border-radius: 30px;
+        pointer-events: none;
+        z-index: 1;
       }
 
       @keyframes swing {
@@ -747,31 +874,42 @@
 
       .love-letter h2 {
         font-family: "Parisienne", cursive;
-        font-size: 3rem;
+        font-size: 3.5rem;
         color: var(--rose-deep);
-        margin-bottom: 30px;
+        margin-bottom: 40px;
+        position: relative;
+        z-index: 2;
+        text-shadow: 2px 2px 4px rgba(201, 24, 74, 0.1);
       }
 
       .love-letter p {
-        font-size: 1.3rem;
-        line-height: 2;
+        font-size: 1.4rem;
+        line-height: 2.2;
         color: var(--text-soft);
-        margin-bottom: 25px;
-        text-align: left;
+        margin-bottom: 30px;
+        text-align: center;
+        position: relative;
+        z-index: 2;
       }
 
       .love-letter .signature {
         font-family: "Parisienne", cursive;
-        font-size: 2rem;
+        font-size: 2.5rem;
         color: var(--rose-pink);
-        margin-top: 40px;
+        margin-top: 50px;
         text-align: right;
+        position: relative;
+        z-index: 2;
+        text-shadow: 1px 1px 3px rgba(201, 24, 74, 0.2);
       }
 
       .hearts-decoration {
-        font-size: 1.5rem;
-        margin: 20px 0;
-        opacity: 0.6;
+        font-size: 2rem;
+        margin: 35px 0;
+        opacity: 0.7;
+        position: relative;
+        z-index: 2;
+        animation: pulse 2s ease-in-out infinite;
       }
 
       @media (max-width: 768px) {
@@ -819,7 +957,8 @@
         }
 
         .love-letter {
-          padding: 40px 25px;
+          padding: 40px 30px;
+          max-width: 95%;
         }
 
         .love-letter h2 {
@@ -827,12 +966,13 @@
         }
 
         .love-letter p {
-          font-size: 1.1rem;
+          font-size: 1.15rem;
+          line-height: 2;
         }
 
         .kiss-gif {
-          width: 150px;
-          height: 150px;
+          width: 200px;
+          height: 200px;
         }
 
         .hug-gif {
@@ -857,6 +997,24 @@
     </style>
   </head>
   <body>
+    <!-- Welcome Overlay - MUST be clicked for music to work -->
+    <div class="welcome-overlay" id="welcomeOverlay">
+      <div class="welcome-content">
+        <h2>💝 Hey Tepi… 💕</h2>
+        <p style="font-size: 1.1rem; line-height: 1.6">
+          I worked on this just for you… 🥺 It might be a little cheesy. But I
+          hope it makes you smile.<br />
+          <strong>Click below when you’re ready!</strong> ✨
+        </p>
+        <button class="start-button" onclick="startExperience()">
+          Open Your Surprise 💌
+        </button>
+        <!-- <p style="font-size: 0.9rem; margin-top: 15px; opacity: 0.8">
+          (Required to enable sound)
+        </p> -->
+      </div>
+    </div>
+
     <!-- Floating petals -->
     <script>
       const bgMusic = document.getElementById("bgMusic");
@@ -920,7 +1078,7 @@
               class="main-image"
             />
             <img
-              src="./tepi1.jpeg"
+              src="./tepi2.jpeg"
               alt="Your beauty takes my breath away"
               class="hover-image"
             />
@@ -954,6 +1112,11 @@
               style="left: 90%; animation-delay: 1.8s"
               >💕</span
             >
+            <span
+              class="heart-particle"
+              style="left: 90%; animation-delay: 1.8s"
+              >🤍</span
+            >
           </div>
           <p class="photo-caption">The moment that started it all ✨</p>
           <p class="photo-caption alternate">
@@ -962,11 +1125,7 @@
         </div>
 
         <div class="flower-arrangement">
-          <img
-            src="./Bouquet from Pixa.png"
-            alt="Lily Bouquet"
-            class="bouquet-image"
-          />
+          <img src="./lily.png" alt="Lily Bouquet" class="bouquet-image" />
         </div>
 
         <div class="message">
@@ -976,8 +1135,8 @@
             you're the most beautiful bloom.
           </p>
           <p>
-            Every moment with you feels like<br />
-            springtime in my heart.
+            didn’t know hearts could smile<br />
+            until I met you 😌💗
           </p>
           <div class="heart-divider">♥</div>
         </div>
@@ -1005,7 +1164,7 @@
       <div class="success-page" id="successPage">
         <div class="kiss-gif">
           <img
-            src="https://media.giphy.com/media/G3va31oEEnIkM/giphy.gif"
+            src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExemxvZWJod3NqdDd4OHRsbzUyaWJram1vZDRxNnhub2hzZG1udGtjciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xCaiupLhG6gyRWuKhu/giphy.gif"
             alt="Kiss"
           />
         </div>
@@ -1016,27 +1175,18 @@
           <p>My Dearest,</p>
 
           <p>
-            From the moment I first saw you, I knew my world would never be the
-            same. You walked into my life like the first bloom of spring,
-            bringing color, warmth, and endless joy to every single day.
-          </p>
-
-          <p>
-            Every smile you give me, every laugh we share, every moment spent
-            together is a treasure I hold close to my heart. You make the
-            ordinary extraordinary, and the simple moments absolutely magical.
+            From the moment you walked into my life, everything changed. You
+            brought color, warmth, and endless joy to my world.
           </p>
 
           <p>
             You are my favorite person, my best friend, and the love of my life.
-            With you, I've found a happiness I didn't know existed, and a love
-            deeper than I ever imagined possible.
+            ,With you, I’ve found a joy I didn’t know existed ✨
           </p>
 
           <p>
-            Thank you for saying yes to being my Valentine. Thank you for being
-            you. I promise to cherish you, make you smile, and love you more
-            with each passing day.
+            Thank you for saying yes. I promise to cherish you, make you smile,
+            and love you more with each passing day.
           </p>
 
           <div class="hearts-decoration">💕 ✨ 💖 ✨ 💕</div>
@@ -1045,20 +1195,15 @@
           <div class="signature">Your Love 💗</div>
 
           <div class="hug-button-wrapper">
-            <button
-              class="hug-button"
-              id="hugButton"
-              onmouseover="moveHugButton()"
-              onclick="showHug()"
-            >
-              <span>I Need a Hug! 🤗</span>
+            <button class="hug-button" id="hugButton" onclick="showHug()">
+              <span>Need a Hug?! 🤭</span>
             </button>
           </div>
 
           <div class="hug-gif-container" id="hugGifContainer">
             <div class="hug-gif">
               <img
-                src="https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif"
+                src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmtpbnVsamxjbTdiYjh4MHVncDkwa21zaWIybmFmaHEyam8wNmk2NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vee4QaHkT30ic/giphy.gif"
                 alt="Warm Hug"
               />
             </div>
@@ -1082,10 +1227,170 @@
 
     <!-- Background Music -->
     <audio id="bgMusic" loop>
-      <source src="./dan.mp3" type="audio/mpeg" />
+      <source type="audio/mpeg" />
+    </audio>
+
+    <!-- Sound Effects -->
+    <audio id="yesSound" preload="auto">
+      <source type="audio/mpeg" />
+    </audio>
+    <audio id="noSound" preload="auto">
+      <source type="audio/mpeg" />
+    </audio>
+    <audio id="swooshSound" preload="auto">
+      <source type="audio/mpeg" />
+    </audio>
+    <audio id="hugSound" preload="auto">
+      <source type="audio/mpeg" />
     </audio>
 
     <script>
+      // ============================================
+      // BACKGROUND MUSIC CONFIGURATION
+      // Change this URL to use your own background music!
+      // You can choose from these romantic music options:
+      // ============================================
+
+      // Option 1: Romantic Piano (recommended)
+      const BACKGROUND_MUSIC = "./lovestory.mp3";
+
+      // Option 2: Soft Romance
+      // const BACKGROUND_MUSIC = "https://assets.mixkit.co/music/preview/mixkit-romantic-dreams-582.mp3";
+
+      // Option 3: Sweet Love
+      // const BACKGROUND_MUSIC = "https://assets.mixkit.co/music/preview/mixkit-love-and-romance-579.mp3";
+
+      // Option 4: Dreamy Romance
+      // const BACKGROUND_MUSIC = "https://assets.mixkit.co/music/preview/mixkit-romantic-moment-588.mp3";
+
+      // Just uncomment the one you want and comment out the others!
+
+      // ============================================
+      // SOUND EFFECTS CONFIGURATION
+      // Change these URLs to use your own sound effects!
+      // ============================================
+      const SOUND_EFFECTS = {
+        // Sound when "Yes" button is clicked (celebration sound)
+        yes: "./pop.m4a",
+
+        // Sound when "No" button is clicked (playful rejection sound)
+        no: "./no.wav",
+
+        // Sound when hug button moves (swoosh/whoosh sound)
+        swoosh: "https://cdn.freesound.org/previews/456/456966_8401846-lq.mp3",
+
+        // Sound when hug is accepted (warm/cozy sound)
+        hug: "./kiss4.m4a",
+      };
+
+      let isMusicPlaying = false;
+      let musicAttempted = false;
+
+      // Update audio sources and setup music
+      document.addEventListener("DOMContentLoaded", function () {
+        // Set background music
+        const bgMusic = document.getElementById("bgMusic");
+        bgMusic.src = BACKGROUND_MUSIC;
+        bgMusic.volume = 0.4; // Set to 40% volume
+
+        // Set sound effects
+        document.getElementById("yesSound").src = SOUND_EFFECTS.yes;
+        document.getElementById("noSound").src = SOUND_EFFECTS.no;
+        document.getElementById("swooshSound").src = SOUND_EFFECTS.swoosh;
+        document.getElementById("hugSound").src = SOUND_EFFECTS.hug;
+      });
+
+      // Start experience function - called when user clicks Start button
+      function startExperience() {
+        const overlay = document.getElementById("welcomeOverlay");
+        const bgMusic = document.getElementById("bgMusic");
+        const musicToggle = document.getElementById("musicToggle");
+
+        // Preload and start the music immediately
+        bgMusic.load(); // Force reload
+
+        // Try to play music multiple times if needed
+        const tryPlayMusic = (attempts = 0) => {
+          bgMusic
+            .play()
+            .then(() => {
+              isMusicPlaying = true;
+              musicToggle.textContent = "🎵";
+              musicAttempted = true;
+              console.log("✅ Music started successfully!");
+
+              // Hide the overlay after music starts
+              overlay.classList.add("hidden");
+              setTimeout(() => {
+                overlay.style.display = "none";
+              }, 500);
+            })
+            .catch((e) => {
+              console.log("❌ Music attempt " + (attempts + 1) + " failed:", e);
+
+              if (attempts < 3) {
+                // Retry after a short delay
+                setTimeout(() => tryPlayMusic(attempts + 1), 200);
+              } else {
+                // After 3 attempts, show warning but still hide overlay
+                musicToggle.textContent = "🔇";
+                alert(
+                  "⚠️ Music failed to start. Please click the 🎵 button in the corner to enable music manually.",
+                );
+
+                overlay.classList.add("hidden");
+                setTimeout(() => {
+                  overlay.style.display = "none";
+                }, 500);
+              }
+            });
+        };
+
+        // Start trying to play
+        tryPlayMusic();
+      }
+
+      // Toggle music on/off
+      function toggleMusic() {
+        const bgMusic = document.getElementById("bgMusic");
+        const musicToggle = document.getElementById("musicToggle");
+
+        if (isMusicPlaying) {
+          bgMusic.pause();
+          musicToggle.textContent = "🔇";
+          isMusicPlaying = false;
+        } else {
+          bgMusic
+            .play()
+            .then(() => {
+              musicToggle.textContent = "🎵";
+              isMusicPlaying = true;
+              musicAttempted = true;
+              console.log("✅ Music toggled on!");
+            })
+            .catch((e) => {
+              console.log("❌ Music toggle failed:", e);
+              // Show a friendly message
+              const message = document.createElement("div");
+              message.style.cssText =
+                "position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#ff6b9d;color:white;padding:15px 30px;border-radius:25px;z-index:10000;font-family:Arial;box-shadow:0 4px 15px rgba(0,0,0,0.3);";
+              message.textContent =
+                "🎵 Unable to play music. Check browser settings!";
+              document.body.appendChild(message);
+              setTimeout(() => message.remove(), 3000);
+            });
+        }
+      }
+
+      // Sound effect helper function
+      function playSound(soundId) {
+        const sound = document.getElementById(soundId);
+        if (sound) {
+          sound.currentTime = 0; // Reset to start
+          sound.play().catch((e) => console.log("Sound play failed:", e));
+        }
+      }
+
       const cuteTexts = [
         "Are you sure? 🥺",
         "But... but... I made this for you! 💝",
@@ -1103,21 +1408,39 @@
         "Okay, last try... pretty please? 🙏",
       ];
 
+      // const noButtonTexts = [
+      //   "No",
+      //   "Wait... 🤔",
+      //   "Maybe? 🥺",
+      //   "Umm... 😅",
+      //   "Hold on! 🙈",
+      //   "But... 💭",
+      //   "Stop! ✋",
+      //   "Nope 🏃",
+      //   "Catch me! 😄",
+      //   "Try again 💕",
+      //   "Almost! 🎯",
+      //   "So close! ✨",
+      //   "One more? 🌹",
+      //   "Fine... 😊",
+      // ];
+
       const noButtonTexts = [
-        "No",
-        "Wait... 🤔",
-        "Maybe? 🥺",
-        "Umm... 😅",
-        "Hold on! 🙈",
-        "But... 💭",
-        "Stop! ✋",
-        "Nope 🏃",
-        "Catch me! 😄",
-        "Try again 💕",
-        "Almost! 🎯",
-        "So close! ✨",
-        "One more? 🌹",
-        "Fine... 😊",
+        "Nooo? 🥺",
+        "Waittt 😚",
+        "Reallyyy? 🥹",
+        "Think again 💕",
+        "But whyy 🌸",
+        "U sure? 😗",
+        "Pretty pls ✨",
+        "Just maybe? 💗",
+        "Don’t tease 😌",
+        "Almosttt 💞",
+        "One kiss? 💋",
+        "Can I hug? 🤗",
+        "Noodle date? 🍜",
+        "Try again cutie 💓",
+        "So closeee 🫶",
       ];
 
       let textIndex = 0;
@@ -1127,6 +1450,9 @@
         const button = document.getElementById("noButton");
         const cuteText = document.getElementById("cuteText");
         const yesButton = document.querySelector(".yes-button");
+
+        // Play sound effect
+        playSound("noSound");
 
         // Show cute text
         cuteText.textContent = cuteTexts[textIndex];
@@ -1165,6 +1491,9 @@
         const cuteText = document.getElementById("cuteText");
         const celebration = document.getElementById("celebration");
         const responseMessage = document.getElementById("responseMessage");
+
+        // Play celebration sound
+        playSound("yesSound");
 
         button.style.transform = "scale(0)";
         button.style.opacity = "0";
@@ -1261,6 +1590,9 @@
         const hugButton = document.getElementById("hugButton");
         const hugGifContainer = document.getElementById("hugGifContainer");
 
+        // Play warm hug sound
+        playSound("hugSound");
+
         hugButton.style.transform = "scale(0)";
         hugButton.style.opacity = "0";
 
@@ -1285,6 +1617,9 @@
         if (hugAttempts >= maxHugAttempts) {
           return; // Stop moving after max attempts, let them click
         }
+
+        // Play swoosh sound when button moves
+        playSound("swooshSound");
 
         const button = document.getElementById("hugButton");
         const wrapper = button.parentElement;
